@@ -257,3 +257,44 @@ const countTotal = (num) => {
 
 console.log(countTotal(5));
 console.log(countTotal(5));
+
+// interview questions
+
+function greet12(name = "Guest") {
+  return `Hello ${name}`;
+}
+
+console.log(":::::::::::::::===>", greet12());
+
+sayHello121();
+
+function sayHello121() {
+  console.log("Hello");
+}
+
+const greet34 = function (num) {
+  console.log(`the number is ${num}`);
+};
+
+greet34();
+
+const obj = {
+  name: "Prakash",
+  greet: () => {
+    console.log(this.name);
+  },
+};
+
+obj.greet();
+
+// curring example
+
+function addcurring(a) {
+  return function (b) {
+    return function (c) {
+      return a + b + c;
+    };
+  };
+}
+
+console.log(addcurring(1)(2)(2));
