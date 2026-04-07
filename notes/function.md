@@ -524,6 +524,7 @@ _.throttle(fn, 300);
 - call / apply / bind
 - IIFE
 - Currying
+- Debouncing and Throttling
 
 ---
 
