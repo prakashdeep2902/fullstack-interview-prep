@@ -1,126 +1,14 @@
-# 1️⃣ Object Creation in JavaScript
+## 1️⃣ Object Creation
 
-An **Object** is a collection of **key-value pairs**.
+An **object** in JavaScript is a collection of **key–value pairs** used to store related data and behavior.
 
-Think of it like a **real-world object**.
-
-Example: A **person**
-
-- name → "Prakash"
-- age → 28
-- city → "Delhi"
-
-In JavaScript:
-
-```javascript
-const person = {
-  name: "Prakash",
-  age: 28,
-  city: "Delhi",
-};
 ```
-
-Here:
-
-| Key  | Value     |
-| ---- | --------- |
-| name | "Prakash" |
-| age  | 28        |
-| city | "Delhi"   |
-
-So the structure is:
-
-```javascript
 {
-  key: value;
+  key: value
 }
 ```
 
----
-
-# 2️⃣ Different Ways to Create Objects
-
-There are **3 main ways**.
-
----
-
-# Method 1 — Object Literal (Most Common)
-
-This is the **most used method**.
-
-```javascript
-const car = {
-  brand: "BMW",
-  model: "X5",
-  year: 2023,
-};
-
-console.log(car);
-```
-
-Output
-
-```
-{ brand: 'BMW', model: 'X5', year: 2023 }
-```
-
-✔ Simple
-✔ Fast
-✔ Used in **90% of code**
-
----
-
-# Method 2 — Using `new Object()`
-
-```javascript
-const car = new Object();
-
-car.brand = "BMW";
-car.model = "X5";
-car.year = 2023;
-
-console.log(car);
-```
-
-Output
-
-```
-{ brand: 'BMW', model: 'X5', year: 2023 }
-```
-
-But this is **not recommended** because it is longer.
-
----
-
-# Method 3 — Using Constructor Function
-
-Used when creating **multiple objects**.
-
-```javascript
-function Person(name, age) {
-  this.name = name;
-  this.age = age;
-}
-
-const user1 = new Person("Prakash", 28);
-const user2 = new Person("Rahul", 25);
-
-console.log(user1);
-console.log(user2);
-```
-
-Output
-
-```
-Person { name: 'Prakash', age: 28 }
-Person { name: 'Rahul', age: 25 }
-```
-
-# 2️⃣ Accessing Object Properties in JavaScript
-
-Once we create an object, we need to **read or access its values**.
-
-Example object:
+### Example
 
 ```javascript
 const user = {
@@ -130,25 +18,89 @@ const user = {
 };
 ```
 
-Now we want to access:
-
-- name
-- age
-- city
-
-There are **two main ways**.
+| Key  | Value     |
+| ---- | --------- |
+| name | "Prakash" |
+| age  | 28        |
+| city | "Delhi"   |
 
 ---
 
-# 1️⃣ Dot Notation (Most Common)
+### Ways to Create Objects
 
-Syntax
+#### 1. Object Literal (Most Common)
 
 ```javascript
-object.property;
+const user = {
+  name: "Prakash",
+  age: 28,
+};
 ```
 
-Example
+✔ Simple
+✔ Most used in real projects
+
+---
+
+#### 2. Using `new Object()`
+
+```javascript
+const user = new Object();
+
+user.name = "Prakash";
+user.age = 28;
+```
+
+⚠️ Rarely used in modern JavaScript.
+
+---
+
+#### 3. Constructor Function
+
+Used when creating multiple objects.
+
+```javascript
+function User(name, age) {
+  this.name = name;
+  this.age = age;
+}
+
+const user1 = new User("Prakash", 28);
+const user2 = new User("Rahul", 25);
+```
+
+---
+
+### Objects Can Contain
+
+Objects can store different data types:
+
+```javascript
+const user = {
+  name: "Prakash",
+  age: 28,
+  isDeveloper: true,
+  skills: ["JavaScript", "React"],
+  address: {
+    city: "Delhi",
+    country: "India",
+  },
+};
+```
+
+---
+
+# 2️⃣ Accessing Object Properties
+
+Once an object is created, we can access its properties.
+
+## Dot Notation
+
+```
+object.property
+```
+
+Example:
 
 ```javascript
 const user = {
@@ -167,115 +119,35 @@ Prakash
 28
 ```
 
-✔ Simple
-✔ Clean
-✔ Most used
-
 ---
 
-# 2️⃣ Bracket Notation
+## Bracket Notation
 
-Syntax
-
-```javascript
-object["property"];
+```
+object["property"]
 ```
 
-Example
+Example:
 
 ```javascript
-const user = {
-  name: "Prakash",
-  age: 28,
-};
-
 console.log(user["name"]);
-console.log(user["age"]);
 ```
 
-Output
-
-```
-Prakash
-28
-```
+Used when property names are **dynamic**.
 
 ---
 
-# Dot vs Bracket (Important Interview Question)
-
-### Dot Notation
+## Dynamic Property Access
 
 ```javascript
-user.name;
-```
-
-### Bracket Notation
-
-```javascript
-user["name"];
-```
-
-Both give the **same result**.
-
-But bracket notation is useful when **property name is dynamic**.
-
----
-
-# 3️⃣ Dynamic Property Access
-
-Example
-
-```javascript
-const user = {
-  name: "Prakash",
-  age: 28,
-};
-
 const key = "name";
 
 console.log(user[key]);
 ```
 
-Output
-
-```
-Prakash
-```
-
-Here:
-
-```
-user[key]
-```
-
-means
-
-```
-user["name"]
-```
-
-Dot notation **cannot do this**.
-
-❌ This will not work
-
-```javascript
-user.key;
-```
-
-Output
-
-```
-undefined
-```
-
 ---
 
-# 4️⃣ Access Nested Objects
-
-Objects can contain **objects inside them**.
-
-Example:
+## Access Nested Objects
 
 ```javascript
 const user = {
@@ -285,38 +157,18 @@ const user = {
     country: "India",
   },
 };
-```
 
-Access city:
-
-```javascript
 console.log(user.address.city);
-```
-
-Output
-
-```
-Delhi
-```
-
-Step-by-step access
-
-```
-user
-  → address
-       → city
 ```
 
 ---
 
-# 5️⃣ Access Array Inside Object
-
-Example
+## Access Array Inside Object
 
 ```javascript
 const user = {
   name: "Prakash",
-  skills: ["JavaScript", "React", "Node"],
+  skills: ["JavaScript", "React"],
 };
 
 console.log(user.skills[0]);
@@ -330,254 +182,62 @@ JavaScript
 
 ---
 
-# 6️⃣ Easy Example
+# 3️⃣ Object Methods
 
-```javascript
-const car = {
-  brand: "BMW",
-  model: "X5",
-};
+A **method** is a **function stored inside an object**.
 
-console.log(car.brand);
-```
+Objects can store both:
 
-Output
-
-```
-BMW
-```
-
----
-
-# 7️⃣ Medium Example
-
-```javascript
-const student = {
-  name: "Rahul",
-  marks: 90,
-};
-
-console.log(student["marks"]);
-```
-
-Output
-
-```
-90
-```
-
----
-
-# 8️⃣ Hard Example
-
-```javascript
-const company = {
-  name: "Google",
-  location: {
-    city: "California",
-    country: "USA",
-  },
-};
-
-console.log(company.location.country);
-```
-
-Output
-
-```
-USA
-```
-
----
-
-# ⚠️ Common Mistake
-
-```javascript
-const user = {
-  name: "Prakash",
-};
-
-console.log(user.age);
-```
-
-Output
-
-```
-undefined
-```
-
-Because **age does not exist**.
-
----
-
-# 3️⃣ Object Methods in JavaScript
-
-An **Object Method** is simply a **function inside an object**.
-
-So an object can store:
-
-- data (properties)
-- behavior (methods)
+- properties (data)
+- methods (behavior)
 
 Example:
 
 ```javascript
-const person = {
+const user = {
   name: "Prakash",
-  age: 28,
-  greet: function () {
-    console.log("Hello!");
+
+  greet() {
+    console.log("Hello " + this.name);
   },
 };
 
-person.greet();
+user.greet();
 ```
 
 Output
 
 ```
-Hello!
+Hello Prakash
 ```
-
-Here:
-
-| Key   | Value     |
-| ----- | --------- |
-| name  | "Prakash" |
-| age   | 28        |
-| greet | function  |
-
-So **greet() is a method**.
 
 ---
 
-# Method Syntax
+## Method Syntax
 
-Basic syntax:
+### Traditional
 
 ```javascript
 const obj = {
-  methodName: function () {
-    // code
-  },
-};
-```
-
-Call method:
-
-```javascript
-obj.methodName();
-```
-
----
-
-# Example 1 (Easy)
-
-```javascript
-const car = {
-  brand: "BMW",
-  start: function () {
-    console.log("Car started");
-  },
-};
-
-car.start();
-```
-
-Output
-
-```
-Car started
-```
-
----
-
-# Example 2 (Medium)
-
-```javascript
-const calculator = {
-  add: function (a, b) {
-    return a + b;
-  },
-};
-
-console.log(calculator.add(5, 3));
-```
-
-Output
-
-```
-8
-```
-
-The object behaves like a **mini calculator**.
-
----
-
-# Example 3 (Hard)
-
-Method using object properties.
-
-```javascript
-const user = {
-  name: "Prakash",
-  age: 28,
-
-  introduce: function () {
-    console.log("My name is " + this.name);
-  },
-};
-
-user.introduce();
-```
-
-Output
-
-```
-My name is Prakash
-```
-
-Here we used:
-
-```
-this.name
-```
-
-We will explain **this keyword deeply next**.
-
----
-
-# Modern Short Syntax (ES6)
-
-JavaScript allows **short method syntax**.
-
-Instead of:
-
-```javascript
-const user = {
   greet: function () {
     console.log("Hello");
   },
 };
 ```
 
-We can write:
+### Modern ES6 Syntax
 
 ```javascript
-const user = {
+const obj = {
   greet() {
     console.log("Hello");
   },
 };
 ```
 
-This is **modern JavaScript syntax**.
-
 ---
 
-# Object With Multiple Methods
-
-Example:
+## Object with Multiple Methods
 
 ```javascript
 const calculator = {
@@ -588,135 +248,22 @@ const calculator = {
   subtract(a, b) {
     return a - b;
   },
-
-  multiply(a, b) {
-    return a * b;
-  },
 };
 
 console.log(calculator.add(10, 5));
-console.log(calculator.subtract(10, 5));
-console.log(calculator.multiply(10, 5));
-```
-
-Output
-
-```
-15
-5
-50
 ```
 
 ---
 
-# Real World Example (Very Important)
+# 4️⃣ `this` Keyword
 
-Objects often represent **real world entities**.
-
-Example: **Bank Account**
-
-```javascript
-const account = {
-  name: "Prakash",
-  balance: 1000,
-
-  deposit(amount) {
-    this.balance += amount;
-  },
-
-  withdraw(amount) {
-    this.balance -= amount;
-  },
-};
-
-account.deposit(500);
-account.withdraw(200);
-
-console.log(account.balance);
-```
-
-Output
-
-```
-1300
-```
-
----
-
-# Interview Trick Question
-
-What is the output?
-
-```javascript
-const obj = {
-  x: 10,
-  getX() {
-    return this.x;
-  },
-};
-
-console.log(obj.getX());
-```
-
-Answer:
-
-```
-10
-```
-
-Because `this` refers to the **object calling the method**.
-
----
-
-# Practice for You
-
-Tell the output.
-
-### Question 1
-
-```javascript
-const user = {
-  name: "Prakash",
-  sayHello() {
-    console.log("Hello " + this.name);
-  },
-};
-
-user.sayHello();
-```
-
----
-
-### Question 2
-
-```javascript
-const calc = {
-  multiply(a, b) {
-    return a * b;
-  },
-};
-
-console.log(calc.multiply(4, 5));
-```
-
-# 4️⃣ `this` Keyword in JavaScript
-
-The `this` keyword refers to **the object that is calling the function**.
-
-In simple words:
-
-👉 **`this` = current object**
-
----
-
-# 1️⃣ `this` Inside an Object Method
+`this` refers to **the object that is calling the function**.
 
 Example:
 
 ```javascript
 const user = {
   name: "Prakash",
-  age: 28,
 
   greet() {
     console.log(this.name);
@@ -732,48 +279,30 @@ Output
 Prakash
 ```
 
-Explanation:
-
-| Code        | Meaning        |
-| ----------- | -------------- |
-| `this`      | current object |
-| `this.name` | user.name      |
-
-So here:
+Here:
 
 ```
-this = user
+this → user object
 ```
 
 ---
 
-# 2️⃣ Why We Use `this`
+## Why We Use `this`
 
 Without `this`:
-
-❌ Wrong way
 
 ```javascript
 const user = {
   name: "Prakash",
-
   greet() {
     console.log(name);
   },
 };
-
-user.greet();
 ```
 
-Output
+❌ Error because `name` is not defined.
 
-```
-ReferenceError
-```
-
-Because `name` is not defined globally.
-
-Correct way:
+Correct:
 
 ```javascript
 console.log(this.name);
@@ -781,72 +310,7 @@ console.log(this.name);
 
 ---
 
-# 3️⃣ Multiple Objects Example
-
-```javascript
-const user1 = {
-  name: "Prakash",
-  greet() {
-    console.log("Hello " + this.name);
-  },
-};
-
-const user2 = {
-  name: "Rahul",
-  greet() {
-    console.log("Hello " + this.name);
-  },
-};
-
-user1.greet();
-user2.greet();
-```
-
-Output
-
-```
-Hello Prakash
-Hello Rahul
-```
-
-Here:
-
-| Call          | this  |
-| ------------- | ----- |
-| user1.greet() | user1 |
-| user2.greet() | user2 |
-
----
-
-# 4️⃣ `this` in Regular Function
-
-Example:
-
-```javascript
-function show() {
-  console.log(this);
-}
-
-show();
-```
-
-In **browser**
-
-```
-window
-```
-
-In **Node.js**
-
-```
-global
-```
-
-Because the function is called **globally**.
-
----
-
-# 5️⃣ `this` in Arrow Function ⚠️ (Important)
+## `this` in Arrow Functions
 
 Arrow functions **do not have their own `this`**.
 
@@ -855,7 +319,6 @@ Example:
 ```javascript
 const user = {
   name: "Prakash",
-
   greet: () => {
     console.log(this.name);
   },
@@ -870,129 +333,160 @@ Output
 undefined
 ```
 
-Because arrow functions **inherit this from parent scope**.
+Because arrow functions inherit `this` from **parent scope**.
 
 ---
 
-# 6️⃣ Correct Way (Use Normal Function)
+## Best Practice
 
-```javascript
-const user = {
-  name: "Prakash",
+Use **normal functions for object methods**.
 
-  greet() {
-    console.log(this.name);
-  },
-};
-
-user.greet();
-```
-
-Output
-
-```
-Prakash
-```
-
----
-
-# 7️⃣ Interview Trap Question
-
-What will be the output?
+Correct:
 
 ```javascript
 const obj = {
-  name: "Prakash",
-  greet() {
-    console.log(this.name);
+  show() {
+    console.log(this);
   },
 };
-
-const fn = obj.greet;
-fn();
 ```
 
-Output
-
-```
-undefined
-```
-
-Why?
-
-Because the function is called **without the object**.
-
-So `this` is **global**.
-
----
-
-# 8️⃣ Real World Example (React-like)
-
-```javascript
-const counter = {
-  count: 0,
-
-  increment() {
-    this.count++;
-  },
-};
-
-counter.increment();
-counter.increment();
-
-console.log(counter.count);
-```
-
-Output
-
-```
-2
-```
-
----
-
-# 🧠 Interview Summary
-
-| Situation        | `this` value |
-| ---------------- | ------------ |
-| Object method    | object       |
-| Regular function | global       |
-| Arrow function   | parent scope |
-| Class            | instance     |
-
----
-
-# 🧪 Practice Questions
-
-### Question 1
-
-Tell the output.
-
-```javascript
-const user = {
-  name: "Prakash",
-
-  greet() {
-    console.log("Hello " + this.name);
-  },
-};
-
-user.greet();
-```
-
----
-
-### Question 2
+Avoid:
 
 ```javascript
 const obj = {
-  x: 10,
   show: () => {
-    console.log(this.x);
+    console.log(this);
+  },
+};
+```
+
+---
+
+# 5️⃣ Object Destructuring
+
+Object destructuring allows extracting values from objects into variables.
+
+Instead of:
+
+```javascript
+const user = {
+  name: "Prakash",
+  age: 28,
+};
+
+const name = user.name;
+const age = user.age;
+```
+
+We can write:
+
+```javascript
+const { name, age } = user;
+```
+
+---
+
+## Example
+
+```javascript
+const user = {
+  name: "Prakash",
+  age: 28,
+};
+
+const { name, age } = user;
+
+console.log(name);
+console.log(age);
+```
+
+---
+
+## Rename Variables
+
+```javascript
+const { name: userName, age: userAge } = user;
+```
+
+---
+
+## Default Values
+
+```javascript
+const user = {
+  name: "Prakash",
+};
+
+const { name, age = 25 } = user;
+```
+
+Output
+
+```
+25
+```
+
+---
+
+## Nested Destructuring
+
+```javascript
+const user = {
+  name: "Prakash",
+  address: {
+    city: "Delhi",
   },
 };
 
-obj.show();
+const {
+  address: { city },
+} = user;
+
+console.log(city);
 ```
+
+---
+
+## Destructuring in Function Parameters
+
+Very common in React and Node.js.
+
+```javascript
+function printUser({ name, age }) {
+  console.log(name, age);
+}
+
+const user = {
+  name: "Prakash",
+  age: 28,
+};
+
+printUser(user);
+```
+
+---
+
+# ⭐ Interview Tips
+
+Important points interviewers check:
+
+1. Difference between **dot notation vs bracket notation**
+2. Understanding of **this keyword**
+3. When **arrow functions break `this`**
+4. Using **object destructuring**
+5. Accessing **nested object properties**
+
+---
+
+# Quick Summary
+
+| Topic                | Key Idea                        |
+| -------------------- | ------------------------------- |
+| Object Creation      | Objects store key-value data    |
+| Access Properties    | Dot notation / Bracket notation |
+| Object Methods       | Functions inside objects        |
+| this Keyword         | Refers to calling object        |
+| Object Destructuring | Extract values from objects     |
 
 ---

@@ -73,3 +73,33 @@ const obj = {
 };
 
 console.log(obj.get());
+
+const counter = {
+  count: 0,
+  increment() {
+    this.count++;
+  },
+};
+
+counter.increment();
+console.log(counter.count);
+counter.increment();
+console.log(counter.count);
+counter.increment();
+console.log(counter.count);
+counter.increment();
+console.log(counter.count);
+counter.increment();
+console.log(counter.count);
+
+// this with arrow function
+
+const user13 = {
+  name: "sriDevi",
+  work: "In It",
+  desc: () => {
+    console.log(work);
+  },
+};
+
+user13.desc();
