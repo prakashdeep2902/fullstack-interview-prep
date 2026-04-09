@@ -698,3 +698,301 @@ const calc = {
 
 console.log(calc.multiply(4, 5));
 ```
+
+# 4️⃣ `this` Keyword in JavaScript
+
+The `this` keyword refers to **the object that is calling the function**.
+
+In simple words:
+
+👉 **`this` = current object**
+
+---
+
+# 1️⃣ `this` Inside an Object Method
+
+Example:
+
+```javascript
+const user = {
+  name: "Prakash",
+  age: 28,
+
+  greet() {
+    console.log(this.name);
+  },
+};
+
+user.greet();
+```
+
+Output
+
+```
+Prakash
+```
+
+Explanation:
+
+| Code        | Meaning        |
+| ----------- | -------------- |
+| `this`      | current object |
+| `this.name` | user.name      |
+
+So here:
+
+```
+this = user
+```
+
+---
+
+# 2️⃣ Why We Use `this`
+
+Without `this`:
+
+❌ Wrong way
+
+```javascript
+const user = {
+  name: "Prakash",
+
+  greet() {
+    console.log(name);
+  },
+};
+
+user.greet();
+```
+
+Output
+
+```
+ReferenceError
+```
+
+Because `name` is not defined globally.
+
+Correct way:
+
+```javascript
+console.log(this.name);
+```
+
+---
+
+# 3️⃣ Multiple Objects Example
+
+```javascript
+const user1 = {
+  name: "Prakash",
+  greet() {
+    console.log("Hello " + this.name);
+  },
+};
+
+const user2 = {
+  name: "Rahul",
+  greet() {
+    console.log("Hello " + this.name);
+  },
+};
+
+user1.greet();
+user2.greet();
+```
+
+Output
+
+```
+Hello Prakash
+Hello Rahul
+```
+
+Here:
+
+| Call          | this  |
+| ------------- | ----- |
+| user1.greet() | user1 |
+| user2.greet() | user2 |
+
+---
+
+# 4️⃣ `this` in Regular Function
+
+Example:
+
+```javascript
+function show() {
+  console.log(this);
+}
+
+show();
+```
+
+In **browser**
+
+```
+window
+```
+
+In **Node.js**
+
+```
+global
+```
+
+Because the function is called **globally**.
+
+---
+
+# 5️⃣ `this` in Arrow Function ⚠️ (Important)
+
+Arrow functions **do not have their own `this`**.
+
+Example:
+
+```javascript
+const user = {
+  name: "Prakash",
+
+  greet: () => {
+    console.log(this.name);
+  },
+};
+
+user.greet();
+```
+
+Output
+
+```
+undefined
+```
+
+Because arrow functions **inherit this from parent scope**.
+
+---
+
+# 6️⃣ Correct Way (Use Normal Function)
+
+```javascript
+const user = {
+  name: "Prakash",
+
+  greet() {
+    console.log(this.name);
+  },
+};
+
+user.greet();
+```
+
+Output
+
+```
+Prakash
+```
+
+---
+
+# 7️⃣ Interview Trap Question
+
+What will be the output?
+
+```javascript
+const obj = {
+  name: "Prakash",
+  greet() {
+    console.log(this.name);
+  },
+};
+
+const fn = obj.greet;
+fn();
+```
+
+Output
+
+```
+undefined
+```
+
+Why?
+
+Because the function is called **without the object**.
+
+So `this` is **global**.
+
+---
+
+# 8️⃣ Real World Example (React-like)
+
+```javascript
+const counter = {
+  count: 0,
+
+  increment() {
+    this.count++;
+  },
+};
+
+counter.increment();
+counter.increment();
+
+console.log(counter.count);
+```
+
+Output
+
+```
+2
+```
+
+---
+
+# 🧠 Interview Summary
+
+| Situation        | `this` value |
+| ---------------- | ------------ |
+| Object method    | object       |
+| Regular function | global       |
+| Arrow function   | parent scope |
+| Class            | instance     |
+
+---
+
+# 🧪 Practice Questions
+
+### Question 1
+
+Tell the output.
+
+```javascript
+const user = {
+  name: "Prakash",
+
+  greet() {
+    console.log("Hello " + this.name);
+  },
+};
+
+user.greet();
+```
+
+---
+
+### Question 2
+
+```javascript
+const obj = {
+  x: 10,
+  show: () => {
+    console.log(this.x);
+  },
+};
+
+obj.show();
+```
+
+---
