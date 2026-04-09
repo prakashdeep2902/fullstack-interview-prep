@@ -116,4 +116,296 @@ Person { name: 'Prakash', age: 28 }
 Person { name: 'Rahul', age: 25 }
 ```
 
+# 2️⃣ Accessing Object Properties in JavaScript
+
+Once we create an object, we need to **read or access its values**.
+
+Example object:
+
+```javascript
+const user = {
+  name: "Prakash",
+  age: 28,
+  city: "Delhi",
+};
+```
+
+Now we want to access:
+
+- name
+- age
+- city
+
+There are **two main ways**.
+
+---
+
+# 1️⃣ Dot Notation (Most Common)
+
+Syntax
+
+```javascript
+object.property;
+```
+
+Example
+
+```javascript
+const user = {
+  name: "Prakash",
+  age: 28,
+};
+
+console.log(user.name);
+console.log(user.age);
+```
+
+Output
+
+```
+Prakash
+28
+```
+
+✔ Simple
+✔ Clean
+✔ Most used
+
+---
+
+# 2️⃣ Bracket Notation
+
+Syntax
+
+```javascript
+object["property"];
+```
+
+Example
+
+```javascript
+const user = {
+  name: "Prakash",
+  age: 28,
+};
+
+console.log(user["name"]);
+console.log(user["age"]);
+```
+
+Output
+
+```
+Prakash
+28
+```
+
+---
+
+# Dot vs Bracket (Important Interview Question)
+
+### Dot Notation
+
+```javascript
+user.name;
+```
+
+### Bracket Notation
+
+```javascript
+user["name"];
+```
+
+Both give the **same result**.
+
+But bracket notation is useful when **property name is dynamic**.
+
+---
+
+# 3️⃣ Dynamic Property Access
+
+Example
+
+```javascript
+const user = {
+  name: "Prakash",
+  age: 28,
+};
+
+const key = "name";
+
+console.log(user[key]);
+```
+
+Output
+
+```
+Prakash
+```
+
+Here:
+
+```
+user[key]
+```
+
+means
+
+```
+user["name"]
+```
+
+Dot notation **cannot do this**.
+
+❌ This will not work
+
+```javascript
+user.key;
+```
+
+Output
+
+```
+undefined
+```
+
+---
+
+# 4️⃣ Access Nested Objects
+
+Objects can contain **objects inside them**.
+
+Example:
+
+```javascript
+const user = {
+  name: "Prakash",
+  address: {
+    city: "Delhi",
+    country: "India",
+  },
+};
+```
+
+Access city:
+
+```javascript
+console.log(user.address.city);
+```
+
+Output
+
+```
+Delhi
+```
+
+Step-by-step access
+
+```
+user
+  → address
+       → city
+```
+
+---
+
+# 5️⃣ Access Array Inside Object
+
+Example
+
+```javascript
+const user = {
+  name: "Prakash",
+  skills: ["JavaScript", "React", "Node"],
+};
+
+console.log(user.skills[0]);
+```
+
+Output
+
+```
+JavaScript
+```
+
+---
+
+# 6️⃣ Easy Example
+
+```javascript
+const car = {
+  brand: "BMW",
+  model: "X5",
+};
+
+console.log(car.brand);
+```
+
+Output
+
+```
+BMW
+```
+
+---
+
+# 7️⃣ Medium Example
+
+```javascript
+const student = {
+  name: "Rahul",
+  marks: 90,
+};
+
+console.log(student["marks"]);
+```
+
+Output
+
+```
+90
+```
+
+---
+
+# 8️⃣ Hard Example
+
+```javascript
+const company = {
+  name: "Google",
+  location: {
+    city: "California",
+    country: "USA",
+  },
+};
+
+console.log(company.location.country);
+```
+
+Output
+
+```
+USA
+```
+
+---
+
+# ⚠️ Common Mistake
+
+```javascript
+const user = {
+  name: "Prakash",
+};
+
+console.log(user.age);
+```
+
+Output
+
+```
+undefined
+```
+
+Because **age does not exist**.
+
 ---
