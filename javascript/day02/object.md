@@ -409,3 +409,292 @@ undefined
 Because **age does not exist**.
 
 ---
+
+# 3️⃣ Object Methods in JavaScript
+
+An **Object Method** is simply a **function inside an object**.
+
+So an object can store:
+
+- data (properties)
+- behavior (methods)
+
+Example:
+
+```javascript
+const person = {
+  name: "Prakash",
+  age: 28,
+  greet: function () {
+    console.log("Hello!");
+  },
+};
+
+person.greet();
+```
+
+Output
+
+```
+Hello!
+```
+
+Here:
+
+| Key   | Value     |
+| ----- | --------- |
+| name  | "Prakash" |
+| age   | 28        |
+| greet | function  |
+
+So **greet() is a method**.
+
+---
+
+# Method Syntax
+
+Basic syntax:
+
+```javascript
+const obj = {
+  methodName: function () {
+    // code
+  },
+};
+```
+
+Call method:
+
+```javascript
+obj.methodName();
+```
+
+---
+
+# Example 1 (Easy)
+
+```javascript
+const car = {
+  brand: "BMW",
+  start: function () {
+    console.log("Car started");
+  },
+};
+
+car.start();
+```
+
+Output
+
+```
+Car started
+```
+
+---
+
+# Example 2 (Medium)
+
+```javascript
+const calculator = {
+  add: function (a, b) {
+    return a + b;
+  },
+};
+
+console.log(calculator.add(5, 3));
+```
+
+Output
+
+```
+8
+```
+
+The object behaves like a **mini calculator**.
+
+---
+
+# Example 3 (Hard)
+
+Method using object properties.
+
+```javascript
+const user = {
+  name: "Prakash",
+  age: 28,
+
+  introduce: function () {
+    console.log("My name is " + this.name);
+  },
+};
+
+user.introduce();
+```
+
+Output
+
+```
+My name is Prakash
+```
+
+Here we used:
+
+```
+this.name
+```
+
+We will explain **this keyword deeply next**.
+
+---
+
+# Modern Short Syntax (ES6)
+
+JavaScript allows **short method syntax**.
+
+Instead of:
+
+```javascript
+const user = {
+  greet: function () {
+    console.log("Hello");
+  },
+};
+```
+
+We can write:
+
+```javascript
+const user = {
+  greet() {
+    console.log("Hello");
+  },
+};
+```
+
+This is **modern JavaScript syntax**.
+
+---
+
+# Object With Multiple Methods
+
+Example:
+
+```javascript
+const calculator = {
+  add(a, b) {
+    return a + b;
+  },
+
+  subtract(a, b) {
+    return a - b;
+  },
+
+  multiply(a, b) {
+    return a * b;
+  },
+};
+
+console.log(calculator.add(10, 5));
+console.log(calculator.subtract(10, 5));
+console.log(calculator.multiply(10, 5));
+```
+
+Output
+
+```
+15
+5
+50
+```
+
+---
+
+# Real World Example (Very Important)
+
+Objects often represent **real world entities**.
+
+Example: **Bank Account**
+
+```javascript
+const account = {
+  name: "Prakash",
+  balance: 1000,
+
+  deposit(amount) {
+    this.balance += amount;
+  },
+
+  withdraw(amount) {
+    this.balance -= amount;
+  },
+};
+
+account.deposit(500);
+account.withdraw(200);
+
+console.log(account.balance);
+```
+
+Output
+
+```
+1300
+```
+
+---
+
+# Interview Trick Question
+
+What is the output?
+
+```javascript
+const obj = {
+  x: 10,
+  getX() {
+    return this.x;
+  },
+};
+
+console.log(obj.getX());
+```
+
+Answer:
+
+```
+10
+```
+
+Because `this` refers to the **object calling the method**.
+
+---
+
+# Practice for You
+
+Tell the output.
+
+### Question 1
+
+```javascript
+const user = {
+  name: "Prakash",
+  sayHello() {
+    console.log("Hello " + this.name);
+  },
+};
+
+user.sayHello();
+```
+
+---
+
+### Question 2
+
+```javascript
+const calc = {
+  multiply(a, b) {
+    return a * b;
+  },
+};
+
+console.log(calc.multiply(4, 5));
+```
